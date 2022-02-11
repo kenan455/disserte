@@ -63,6 +63,10 @@ Route::middleware(['admin'])->group(function () {
 	Route::get('corretor/registro', [UserController::class,'registro'])->name('registro.page');
 
 	Route::post('corretor/registro/store', [UserController::class, 'storeUsuario'])->name('user.store');
+
+	Route::get('corretor/mudar-senha', [CorretorController::class, 'mudarSenha'])->name('corretor.mudar_senha');
+
+    Route::post('corretor/atualizar-senha', [CorretorController::class, 'atualizarSenha'])->name('corretor.atualizar_senha');
 });
 
 

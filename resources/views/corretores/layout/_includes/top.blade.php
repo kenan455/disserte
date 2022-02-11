@@ -77,7 +77,7 @@
 
         @if($user->mudou_senha == 0)
         <li class="nav-item">
-          <a class="nav-link text-white" href="{{route('user.mudar_senha')}}">
+          <a class="nav-link text-white" href="{{route('corretor.mudar_senha')}}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">key</i>
             </div>

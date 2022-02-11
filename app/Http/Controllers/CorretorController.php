@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Corretor;
 use Illuminate\Http\Request;
 use App\Models\User;
-
+use Hash;
 use Auth;
 
 class CorretorController extends Controller
@@ -109,4 +109,21 @@ class CorretorController extends Controller
         return view('login');
     }
 
-}
+    public function mudarSenha()
+    {
+        $user = User::find(Auth::user()->id);
+        return view('corretores/senha', compact('user'));
+    }
+
+    public function atualizarSenha(Request $req){
+        $dados = $req->all();
+        if ($dados['password'] != $dados['confirmar-password']) {
+            return redirect()->route('corretor.mudar_senha')->with('alert', 'Senhas não conferem.');
+        }
+        $user = User::find(Auth::user()->id);
+        $user->mudou_senha = 1;
+        $user->password = Hash::make($req->password);
+        $user->save();
+        return redirect()->route('corretor.mudar_senha')->with('status', 'Senha atualizada com sucesso.');
+    }
+}   
