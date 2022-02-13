@@ -18,6 +18,10 @@ use App\Http\Controllers\RedacaoController;
 |
 */
 
+Route::get('/', function () {
+    return view('index');
+});
+
 Route::get('/login', [UserController::class,'login'])->name('login.page');
 
 Route::post('/auth', [UserController::class,'auth'])->name('auth.user');
@@ -67,6 +71,8 @@ Route::middleware(['admin'])->group(function () {
 	Route::get('corretor/mudar-senha', [CorretorController::class, 'mudarSenha'])->name('corretor.mudar_senha');
 
     Route::post('corretor/atualizar-senha', [CorretorController::class, 'atualizarSenha'])->name('corretor.atualizar_senha');
+
+	Route::get('corretor/alunos', [CorretorController::class, 'alunos'])->name('corretor.alunos');    
 });
 
 

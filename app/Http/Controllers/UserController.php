@@ -155,11 +155,12 @@ class UserController extends Controller
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
             if ( Auth::user()->nivel == 1) {
                 $user = User::find(Auth::user()->id);
-                return view('corretores/dashboard', compact('user'));
+                $user_count = $this->objUser->countUser();
+                return view('corretores/dashboard', compact('user', 'user_count'));
 
             } else if ( Auth::user()->nivel == 2) { 
                 $user = User::find(Auth::user()->id);
-                return view('usuarios/postarRedacao', compact('user'));
+                return redirect()->route('user.correcoes');
             }
         }else {
             return redirect()->back()->with('danger', 'E-mail ou senha inválida');

@@ -27,8 +27,11 @@
               </div>
             </div>
             <hr class="dark horizontal my-0">
-            <div class="card-footer">
-              <p class="mb-0"><span class="text-success text-sm font-weight-bolder">XXX</span> alunos cadastrados</p>
+            <div class="card-footer d-flex justify-content-center">
+              <p class="mb-0">
+                <span class="text-success text-sm font-weight-bold">{{$user_count}}</span> 
+                alunos cadastrados
+              </p>
             </div>
           </div>
         </div>

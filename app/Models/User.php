@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Facades\DB;
 
 class User extends Authenticatable
 {
@@ -57,4 +58,14 @@ class User extends Authenticatable
           'email.unique'=>'Email em uso.',
         ];
     }
+
+    public function countUser()
+    {
+        $users_count = DB::table('users')
+        ->where(['nivel'=>2])
+        ->count();
+
+        return $users_count;
+    }
+
 }

@@ -22,13 +22,13 @@
 		        @csrf
 		        <div class="mx-auto">
 		            <div class='form-row'>
-		                <div class="form-group col-sm-6 mb-5 px-2 py-2">
-		                    <label for="">Nova Senha</label>
-		                    <input minlength="6" maxlength="100" required type="password" class="form-control" name="password" id="password" placeholder="Digite a nova Senha" value="">
+		                <div class="form-group col-sm-6 mb-3 px-2 py-2">
+		                    <label for="" class="form-label">Nova Senha</label>
+		                    <input style="border: 1px solid #e91e63; padding: 10px;" minlength="6" maxlength="100" required type="password" class="form-control" name="password" id="password" placeholder="Digite a nova Senha" value="">
 		                </div> 
-		                <div class="form-group col-sm-6 mb-5 px-2 py-2">
-		                    <label for="">Confirmar Nova Senha</label>
-		                    <input minlength="6" maxlength="100" required type="password" class="form-control" name="confirmar-password" id="confirmar-password" placeholder="Digite a nova Senha Novamente" value="">
+		                <div class="form-group col-sm-6 mb-3 px-2 py-2">
+		                    <label for="" class="form-label">Confirmar Nova Senha</label>
+		                    <input style="border: 1px solid #e91e63; padding: 10px;" minlength="6" maxlength="100" required type="password" class="form-control" name="confirmar-password" id="confirmar-password" placeholder="Digite a nova Senha Novamente" value="">
 		                </div> 
 		            </div>
 		            <input class="form-control btn btn-primary" type="submit" value="Salvar">

@@ -2,10 +2,6 @@
 @section('titulo', 'Tabelas')
 
 @section('conteudo')
-<style type="text/css">
-  
-
-</style>
     <div class="container-fluid py-4">
       <div class="row">
         <div class="col-12">
@@ -28,6 +24,11 @@
                     </tr>
                   </thead>
 
+                  <a class='d-flex justify-content-center pt-2' href="{{route('user.postar_redacao' )}}">
+                    <span onclick="" class="btn btn-primary btn-md">
+                        Postar Redação
+                    </span>
+                  </a>
 
                   @foreach($redacoes as $redacao)
                     <tbody><!-- INICIO do CRUD usuario -->
@@ -51,9 +52,7 @@
                         </td>
 
                         <td>
-
                           <p class="text-xs font-weight-bold mb-0">{{ $redacao->tema_redacao }}</p>
-
                         </td>
 
                         <td class="align-middle text-center text-sm">

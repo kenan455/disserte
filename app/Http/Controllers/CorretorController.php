@@ -98,8 +98,9 @@ class CorretorController extends Controller
 
     public function home()
     {   
+        $user_count = $this->objUser->countUser();
         $user = User::find(Auth::user()->id);
-        return view('corretores/dashboard', compact('user'));
+        return view('corretores/dashboard', compact('user', 'user_count'));
     }
 
     public function logout()
@@ -126,4 +127,11 @@ class CorretorController extends Controller
         $user->save();
         return redirect()->route('corretor.mudar_senha')->with('status', 'Senha atualizada com sucesso.');
     }
+
+    public function alunos(){
+        $user = User::find(Auth::user()->id);
+        $alunos = User::where(['nivel'=>2])->paginate(10);
+        return view('corretores/alunos', compact('alunos', 'user'));
+    }
+
 }   
