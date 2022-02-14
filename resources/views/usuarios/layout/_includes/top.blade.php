@@ -20,6 +20,15 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
   <!-- CSS Files -->
   <link id="pagestyle" href="{{ asset('assets/css/material-dashboard.css?v=3.0.0') }} " rel="stylesheet" />
+
+  <style type="text/css">
+    @media (min-width: 1200px) { 
+      #menu {
+        display: none;
+      }
+    }
+  </style>
+
 </head>
 
 <body class="g-sidenav-show  bg-gray-200">
@@ -99,4 +108,24 @@
 
 
   <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+     <!-- Navbar -->
+      <nav class="align-items-center navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" navbar-scroll="true">
+        <div class="container-fluid py-1 px-3 ">
+          <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4 " id="navbar">
+            <ul class="navbar-nav justify-content-center">
+              <small class="pt-1" id="menu">menu</small >
+              <li class="nav-item d-xl-none ps-3 pt-2">
 
+                <a href="javascript:;" class="nav-link text-body p-0 " id="iconNavbarSidenav">
+                  <div class="sidenav-toggler-inner">
+                    <i class="sidenav-toggler-line"></i>
+                    <i class="sidenav-toggler-line"></i>
+                    <i class="sidenav-toggler-line"></i>
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <!-- End Navbar -->

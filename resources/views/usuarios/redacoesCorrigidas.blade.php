@@ -8,7 +8,7 @@
     <script src="{{ asset('assets/dist/me-markdown.standalone.js') }}"></script>
     <script src="{{ asset('assets/js/main.js') }}"></script>
     <style type="text/css">
-            
+  
       .markdown {
         display: none; 
       }
@@ -18,14 +18,17 @@
         padding: 10px;
       }   
 
-        #medium-editor-toolbar-1{
+      #medium-editor-toolbar-1{
           display: none;
-        }
-        pre{
-          font-size: 1.5rem;
-          overflow: hidden;
-          line-height: 3rem;    
-        }        
+      }
+
+      pre{
+        overflow: hidden;
+        font-size: 1.2rem;
+        line-height: 2rem;
+        font-family:  "Arial";
+        text-align: justify;
+      }     
 
       .highlight {
         background-color:#FFFF7B;

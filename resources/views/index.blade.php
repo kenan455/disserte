@@ -479,7 +479,7 @@
         font-size: 200px;
     }
     .hero-image {
-      background-image: url("{{ asset('assets/lp/disserteGenerico.webp') }}");
+      background-image: url("{{ asset('assets/lp/bannerGenerico.webp') }}");
       background-color: #cccccc;
       height: 500px;
       background-position: center;
@@ -524,7 +524,6 @@
         	display: none;
         }
     }
-
   </style>
 </head>
 <body>
@@ -560,7 +559,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <!--PRICE HEADING START-->
-                        <div id="hover" class="price-heading clearfix">
+                        <div class="price-heading clearfix">
                             <h1>O seu maior projeto tem que ser você!</h1>
                         </div>
                         <!--//PRICE HEADING END-->
@@ -618,17 +617,11 @@
                             </div>
                             <!--//FEATURE LIST END-->
                             
-                            <!-- INICIO FORMULARIO BOTAO PAGSEGURO: NAO EDITE OS COMANDOS DAS LINHAS ABAIXO -->
-                            <form action="https://pagseguro.uol.com.br/pre-approvals/request.html" method="post">
-                                <input type="hidden" name="code" value="9FC173AA49491FB994426FAE28D5F31F" />
-                                <input type="hidden" name="iot" value="button" />
-                                <div  class="generic_price_btn clearfix">
-                                    <button name="submit">
-                                       iniciar rota para aprovação
-                                    </button>
-                                </div>
-                            </form>
-                            <!-- FINAL FORMULARIO BOTAO PAGSEGURO -->
+                            <div class="generic_price_btn clearfix">
+                                <a name="submit" href="https://pay.hotmart.com/V66622486U?off=0fkr8azg&checkoutMode=10">
+                                    iniciar rota para aprovação
+                                </a>
+                            </div>
                         </div>
                         <!--//PRICE CONTENT END-->
                             
@@ -643,7 +636,7 @@
                             <div class="generic_head_price clearfix">
                             
                                 <!--HEAD CONTENT START-->
-                                <div class="generic_head_content clearfix">
+                                <div id="hover"  class="generic_head_content clearfix">
                                 
                                     <!--HEAD START-->
                                     <div  class="head_bg"></div>
@@ -684,17 +677,11 @@
                             <!--//FEATURE LIST END-->
                             
                             <!--BUTTON START-->
-                            <!-- INICIO FORMULARIO BOTAO PAGSEGURO: NAO EDITE OS COMANDOS DAS LINHAS ABAIXO -->
-                            <form action="https://pagseguro.uol.com.br/pre-approvals/request.html" method="post">
-                                <input type="hidden" name="code" value="1FFB2F8ABDBDB7ECC49B7F8FB246A46B" />
-                                <input type="hidden" name="iot" value="button" />
-                                <div  class="generic_price_btn clearfix">
-                                    <button name="submit" >
-                                       iniciar rota para aprovação
-                                    </button>
-                                </div>
-                            </form>
-                            <!-- FINAL FORMULARIO BOTAO PAGSEGURO -->
+                            <div class="generic_price_btn clearfix">
+                                <a name="submit" href="https://pay.hotmart.com/V66622486U?off=uv4fyvg9&checkoutMode=10">
+                                    iniciar rota para aprovação
+                                </a>
+                            </div>
                             
                         </div>
                         <!--//PRICE CONTENT END-->
@@ -750,17 +737,11 @@
                             </div>
                             <!--//FEATURE LIST END-->
                             
-                            <!--BUTTON START-->
-                            <form action="https://pagseguro.uol.com.br/pre-approvals/request.html" method="post">
-                                <input type="hidden" name="code" value="7F1A452DE8E8B941149A1FA58608A9CD" />
-                                <input type="hidden" name="iot" value="button" />
-                                <div  class="generic_price_btn clearfix">
-                                    <button name="submit">
-                                       iniciar rota para aprovação
-                                    </button>
-                                </div>
-                            </form>
-                            <!--//BUTTON END-->
+                            <div class="generic_price_btn clearfix">
+                                <a name="submit" href="https://pay.hotmart.com/V66622486U?off=0d2lf4xk&checkoutMode=10">
+                                    iniciar rota para aprovação
+                                </a>
+                            </div>
                             
                         </div>
                         <!--//PRICE CONTENT END-->
