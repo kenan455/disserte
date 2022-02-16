@@ -72,7 +72,12 @@ class RedacaoController extends Controller
     {   
         $redacao = Redacao::FindOrFail($id);
         $user = User::find(Auth::user()->id);
-        return view('corretores/crud_redacoes/edit', compact('redacao', 'user'));
+
+        if ($redacao->arquivo != null) {
+            return view('corretores/crud_redacoes/editImg', compact('redacao', 'user'));
+        } else {
+            return view('corretores/crud_redacoes/edit', compact('redacao', 'user'));
+        }
     }
 
     /**
@@ -102,6 +107,12 @@ class RedacaoController extends Controller
     public function destroy(Redacao $redacao)
     {
         //
+    }
+
+    public function downloadArquivo($id)
+    {   
+        $arquivo = Redacao::find($id)->arquivo;
+        return response()->download(public_path() . '/' . $arquivo);
     }
 
 

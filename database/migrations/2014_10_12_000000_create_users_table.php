@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->integer('nivel');
             $table->integer('mudou_senha');
+            $table->integer('qtd_correcoes')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

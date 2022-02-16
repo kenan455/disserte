@@ -105,7 +105,6 @@
     </style>
 
     <div class="container-fluid py-4">
-        
 
      <form name="formCad" >
         @csrf
@@ -129,12 +128,11 @@
                         </div>
                     @endif
 
-
                     <div id="redacao" class="form-group col-sm-12 mb-5">
                       <textarea class="editor fontAdjustment "  id="" name="redacao" disabled>
                           {{$redacao->redacao}}
                       </textarea>
-                    </div>
+                    </div> 
 
                     @if($redacao->competencia_5)
                       <div class="form-group row mt-5 text-center d-flex justify-content-between ">
@@ -192,6 +190,7 @@
                         <textarea class="form-control text-justify fontAdjustment p-3" id="redacao" rows="4" name="comentario" disabled>{{$redacao->comentario}}</textarea>
                       </div>
                     @endif
+                    
                     <pre class="markdown"  >
                             
                     </pre>

@@ -40,6 +40,43 @@
       }
     </style>
 
+    <style type="text/css">
+        #upload {
+            opacity: 0;
+        }
+
+        #upload-label {
+            position: absolute;
+            top: 50%;
+            left: 1rem;
+            transform: translateY(-50%);
+        }
+
+        .image-area {
+            border: 2px dashed rgba(255, 255, 255, 0.7);
+            padding: 1rem;
+            position: relative;
+        }
+
+        .image-area::before {
+            content: 'Uploaded image result';
+            color: #fff;
+            font-weight: bold;
+            text-transform: uppercase;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 0.8rem;
+            z-index: 1;
+        }
+
+        .image-area img {
+            z-index: 2;
+            position: relative;
+        }
+    </style>
+
     <div class="container-fluid py-4">
         
 
@@ -64,11 +101,15 @@
                       <div></div>
                     @endif
 
-                    <div id="redacao" class="form-group col-sm-12 ">
-                      <textarea  class="editable" name="redacao" >
-                        <pre style="padding: -200px;">{{$redacao->redacao}}</pre>
-                      </textarea>
+                    <!-- Uploaded image area-->
+                    <div class="image-area mt-4">
+                        <img width="2000" height="1000" id="imageResult" src="{{ asset($redacao->arquivo) }}" alt="" class="img-fluid rounded shadow-sm mx-auto d-flex">
                     </div>
+                    <a class='d-flex justify-content-center pt-2' href="{{route('download.arquivo', $redacao )}}">
+                        <span onclick="$('#form-download-{{ $redacao->arquivo }}').submit()" class="btn btn-primary btn-lg">
+                              Baixar
+                         </span>
+                    </a>
 
                     @if($redacao->competencia_5)
                       <div class="form-group row mt-5 text-center d-flex justify-content-between ">
@@ -328,39 +369,6 @@
                                   }
                               });
                       </script>
-
-                     <!--
-                    <script>
-                        
-                        (function () {
-                            var markDownEl = document.querySelector(".markdown");
-                            new MediumEditor(document.querySelector(".editor"), {
-                                extensions: {
-                                    markdown: new MeMarkdown(function (md) {
-                                        markDownEl.textContent = md;
-                                    })
-                                }
-                            });
-                        })();
-                    </script>
-                    <script type="text/javascript">
-                        (function () {
-                            var removeBtn = document.getElementById('remove');
-                            var sandbox = document.getElementById('sandbox');
-                            var colors = new ColorPicker(document.querySelector('.color-picker'));
-                            var hltr = new TextHighlighter(sandbox);
-                    
-                            colors.onColorChange(function (color) {
-                                hltr.setColor(color);
-                                
-                            });
-                            removeBtn.addEventListener('click', function () {
-                                hltr.removeHighlights();
-                            });
-                        })();
-                    </script>
-                    -->
-
                         
 
                 </div>

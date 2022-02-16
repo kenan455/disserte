@@ -74,6 +74,7 @@
                     </tbody><!-- FIM do CRUD usuario -->
                   @endforeach
                 </table>
+                {{ $redacoes->links('pagination::bootstrap-4') }}
               </div>
             </div>
           </div>

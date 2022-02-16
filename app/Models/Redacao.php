@@ -17,6 +17,8 @@ class Redacao extends Model
     	'tema_redacao',
         'redacao',
         'corrigida',
-        'user_id'
+        'user_id',
+        'qtd_correcoes',
+        'arquivo'
     ];
 }

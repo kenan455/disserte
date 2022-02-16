@@ -72,7 +72,12 @@ Route::middleware(['admin'])->group(function () {
 
     Route::post('corretor/atualizar-senha', [CorretorController::class, 'atualizarSenha'])->name('corretor.atualizar_senha');
 
-	Route::get('corretor/alunos', [CorretorController::class, 'alunos'])->name('corretor.alunos');    
+	Route::get('corretor/alunos', [CorretorController::class, 'alunos'])->name('corretor.alunos');
+	Route::get('corretor/alunos/update/{id}', [UserController::class, 'atualizarPlano'])->name('atualizarPlano.usuario');
+	Route::post('/corretor/pesquisarAluno', [UserController::class,'pesquisa'])->name('alunos.pesquisar');
+
+
+	Route::get('/corretor/downloadArquivo/{id}',  [RedacaoController::class, 'downloadArquivo'])->name('download.arquivo');
 });
 
 

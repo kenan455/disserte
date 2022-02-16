@@ -22,7 +22,7 @@ class CreateRedacoesTable extends Migration
 
             $table->string('tema_redacao');
 
-            $table->text('redacao');
+            $table->text('redacao')->nullable();
 
             $table->boolean('corrigida');
             
@@ -43,6 +43,10 @@ class CreateRedacoesTable extends Migration
             $table->integer('competencia_5')->nullable();
 
             $table->text('comentario')->nullable();
+
+            $table->integer('qtd_correcoes')->nullable();
+
+            $table->string('arquivo')->nullable();
 
             $table->timestamps();
         });

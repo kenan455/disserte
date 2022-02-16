@@ -25,7 +25,8 @@ class User extends Authenticatable
         'nivel',
         'telefone',
         'plano',
-        'mudou_senha'
+        'mudou_senha',
+        'qtd_correcoes'
     ];
 
     /**
@@ -68,4 +69,58 @@ class User extends Authenticatable
         return $users_count;
     }
 
+    private $porPagina = 10;
+
+    public function getPorPagina(){
+        return $this->porPagina;
+    }
+
+    public function pesquisa($req){
+        $dados = $req->all();
+
+        if (isset($dados['pesquisa']) && $dados['pesquisa'] != null ) {
+
+            $resposta = User::where(function($query) use ($dados){
+                $query->Where('name', 'like', $dados['pesquisa']."%")
+                ->orWhere('id', '=', intval($dados['pesquisa']));
+            })
+            ->paginate($this->getPorPagina());
+            
+        } elseif(isset($dados['date']) && isset($dados['plano_expirado'])) {
+            $resposta = User::where(function($query) use ($dados){
+                $orderdate = explode('-', $dados['date']);
+                $day = $orderdate[0];
+                $month   = $orderdate[1];
+                $year  = $orderdate[2];
+
+                $query->Where('qtd_correcoes', 'like', $dados['plano_expirado']."%")
+                ->Where('created_at', '>=', $year.'-'. $month.'-'.$day.' 00:00:00');
+            })
+            ->paginate($this->getPorPagina());
+        } elseif(isset($dados['plano_expirado'])) {
+            $resposta = User::where(function($query) use ($dados){
+                $query->Where('qtd_correcoes', 'like', $dados['plano_expirado']."%");
+            })
+            ->paginate($this->getPorPagina());
+        } elseif(isset($dados['date'])) {
+            $resposta = User::where(function($query) use ($dados){
+                $orderdate = explode('-', $dados['date']);
+                $day = $orderdate[0];
+                $month   = $orderdate[1];
+                $year  = $orderdate[2];
+
+                $query->Where('created_at', '>=', $year.'-'. $month.'-'.$day.' 00:00:00');
+            })
+            ->paginate($this->getPorPagina());
+        } else {
+            abort(404);
+        }
+
+        $dataForm = $req->except('_token');
+        $retornar['resposta'] = $resposta;
+        $retornar['dataForm'] = $dataForm;
+        
+        return $retornar;
+
+    }
 }

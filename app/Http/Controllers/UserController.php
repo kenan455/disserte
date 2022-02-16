@@ -44,18 +44,46 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+    public function inserirAnexo($anexo, $pasta){
+        $num = rand(1111, 9999);
+        $dir = "arquivos/$pasta";
+        $type = "arquivos/$pasta";
+        $ex = $anexo->guessClientExtension();
+        $nomeAnexo = time().random_int(100, 999) .'.' . $ex;
+        public_path($dir.''.$type.'/'.$nomeAnexo.'/');
+        $anexo->move($dir, $nomeAnexo);
+        return $dir."/".$nomeAnexo;
+    }
+    
     public function store(Request $request)
     {
+        $idUserDaSessao = User::find(Auth::user()->id)->id;
+
         $dados = $request->all();
 
         $autor = User::find(Auth::user()->id)->name;
         $dados['autor'] = $autor;
 
+        $qtd_correcoes = User::find(Auth::user()->id)->qtd_correcoes;
+        $dados['qtd_correcoes'] = $qtd_correcoes - 1;
+
+        if($dados['qtd_correcoes'] == -1) {
+            return redirect()->route('user.postar_redacao')->with('alert', 'Você atingiu o limite de correções do seu plano.');
+        } 
+
+        $this->objUser->where(['id'=>$idUserDaSessao])->update([
+            'qtd_correcoes'=>$dados['qtd_correcoes']
+        ]);
 
         $dados['corrigida'] = 0;
 
         $user_id = User::find(Auth::user()->id)->id;
         $dados['user_id'] = $user_id;
+
+        if(isset($request->arquivo)){
+            $dados['arquivo'] = $this->inserirAnexo($request->arquivo, 'redacoes');
+        }
 
         $cad = Redacao::create($dados);
         
@@ -180,6 +208,7 @@ class UserController extends Controller
     {
         $redacao = Redacao::FindOrFail($id);
         $user = User::find(Auth::user()->id);
+
         return view('usuarios/redacoesCorrigidas', compact('redacao', 'user'));
     }
 
@@ -192,6 +221,13 @@ class UserController extends Controller
         $dados['nivel'] = $dados['nivel'];
         $dados['mudou_senha'] = 0;
         $dados['password'] = Hash::make($dados['password']);
+
+        if ($dados['plano'] == 'Básico') {
+            $dados['qtd_correcoes'] = 3;
+        } else {
+            $dados['qtd_correcoes'] = 4;
+        }
+
         User::create($dados);
         
         return redirect()->route('corretor.home')->with('status', 'Usuário Cadastrado Com Sucesso');
@@ -222,4 +258,33 @@ class UserController extends Controller
         return redirect()->route('user.mudar_senha')->with('status', 'Senha atualizada com sucesso.');
     }
 
+    public function atualizarPlano(Request $request, $id){
+ 
+         $plano = User::find($id)->plano;
+
+        if ($plano == "Básico") {
+            $this->objUser->where(['id'=>$id])->update([
+                'qtd_correcoes'=>3
+            ]);
+        } else if($plano == "Padrão" || $plano == "Avançado") {
+            $this->objUser->where(['id'=>$id])->update([
+                'qtd_correcoes'=>4
+            ]);
+        }
+        return redirect()->route('corretor.alunos')->with('status', 'Plano atualizado!');
+    }
+
+    public function pesquisa(Request $req)
+    {
+        $user = User::find(Auth::user()->id);
+        
+        $resposta = $this->objUser->pesquisa($req);
+        $alunos = $resposta['resposta'];
+        $dataForm = $resposta['dataForm'];
+
+        
+        
+        //dd($dataForm);
+        return view('corretores/alunos', compact('alunos', 'dataForm', 'user'));
+    }
 }
