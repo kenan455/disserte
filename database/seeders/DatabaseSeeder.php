@@ -40,7 +40,7 @@ class DatabaseSeeder extends Seeder
             'updated_at' => now(),
             'nivel' => 2 
           ]);
-
+        /*
         \DB::table('users')->insert([
             'id' => 3,
             'name' => 'Gabriela Fintelman',
@@ -183,6 +183,6 @@ class DatabaseSeeder extends Seeder
             'updated_at' => now(),
             'nivel' => 2 
           ]);
-
+        */
     }
 }

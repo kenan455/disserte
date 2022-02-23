@@ -85,7 +85,7 @@
           <label for="" class="text-center fontAdjustment">Foto da sua redação</label>
             <div class="input-group px-2 py-2 rounded-pill bg-white shadow-sm">
 
-              <input required id="upload" type="file" onchange="readURL(this);" class="form-control border-0" name="arquivo" id="arquivo">
+              <input id="upload" type="file" onchange="readURL(this);" class="form-control border-0" name="arquivo" id="arquivo">
               <label id="upload-label" for="upload" class="font-weight-light text-muted">Escolha o arquivo</label>
               <div class="input-group-append">
                 <label for="upload" class="btn btn-primary text-white m-0 rounded-pill px-4"> 
